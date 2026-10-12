@@ -68,18 +68,12 @@ a:hover{border-bottom-color:var(--ochre)}
 .prompt p{margin:10px 0 0}
 .prompt .cmd{background:rgba(247,224,195,.12)}
 .prompt .cmd pre{color:var(--creme);white-space:pre-wrap}
-.cta{background:var(--ochre);color:var(--creme);border-radius:22px;padding:30px 22px 30px;margin:34px 0 0;text-align:center}
-.cta .surtitre{font-weight:700;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--creme);opacity:.85;margin:0 0 12px}
-.cta .gros{font-family:Anton,sans-serif;font-size:clamp(30px,8vw,46px);text-transform:uppercase;line-height:.98;margin:0 0 16px}
+.cta{background:var(--ochre);color:var(--creme);border-radius:22px;padding:30px 22px 30px;margin:8px 0 18px;text-align:center}
+.cta .gros{font-family:Anton,sans-serif;font-size:clamp(28px,7.4vw,42px);text-transform:uppercase;line-height:1;margin:0 0 16px}
 .cta p{margin:0 0 12px}
-.cta ul{list-style:none;padding:0;margin:18px auto 20px;max-width:460px;text-align:left}
-.cta li{position:relative;padding:0 0 0 30px;margin:0 0 10px}
-.cta li::before{content:"✓";position:absolute;left:0;top:0;font-weight:700;color:var(--brun);background:var(--creme);
-  width:21px;height:21px;border-radius:6px;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:3px}
-.bouton{display:inline-block;background:var(--brun);color:var(--creme);border:0;border-radius:12px;
-  padding:16px 26px;font-weight:700;font-size:17px;margin-top:6px;border-bottom:0}
-.bouton:hover{border-bottom:0;background:#3f1105}
-.cta .petit{font-size:14px;opacity:.9;margin:14px 0 0}
+.cta .bulle{display:inline-block;background:var(--creme);color:var(--brun);font-weight:700;font-size:20px;
+  padding:12px 26px;border-radius:22px 22px 6px 22px;margin:10px 0 0;box-shadow:0 8px 18px rgba(92,26,8,.25)}
+.intertitre{margin:34px 0 18px}
 footer{padding:40px 0 60px;text-align:center;font-size:14px;color:#8a5238}
 hr{border:0;border-top:2px solid rgba(92,26,8,.12);margin:30px 0}
 </style>
@@ -91,29 +85,38 @@ hr{border:0;border-top:2px solid rgba(92,26,8,.12);margin:30px 0}
   <p class="eyebrow">Pablo Romero</p>
   <h1><span class="accent">Claude Code</span><br>sans limite</h1>
   <p class="chapo">Tu as commenté <b>PROMPT</b>, voilà la ressource de la vidéo : <b>OmniRoute</b>.</p>
-  <p class="chapo">Un projet open source qui se met entre Claude Code et les modèles d'IA. Tu gardes l'outil Claude Code que tu connais, et derrière, OmniRoute le branche sur plus de 200 fournisseurs, dont des dizaines gratuits. Quand un quota tombe, il bascule tout seul sur le suivant.</p>
+  <p class="chapo">Un projet open source qui se met entre Claude Code et les modèles d'IA. Tu gardes l'outil Claude Code que tu connais, et derrière, OmniRoute le branche sur plus de 200 fournisseurs, dont des dizaines gratuits.</p>
   <div class="chiffres">
     <div><b>200+</b><span>fournisseurs d'IA reliés</span></div>
     <div><b>1,6 Md</b><span>tokens gratuits par mois, toutes offres cumulées</span></div>
     <div><b>95 %</b><span>de tokens économisés au maximum par la compression</span></div>
   </div>
-  <ol class="etapes">
-    <li>Tu installes OmniRoute, une commande.</li>
-    <li>Tu branches des fournisseurs gratuits dans son tableau de bord.</li>
-    <li>Tu lances Claude Code à travers lui, et tu codes sans t'arrêter.</li>
-  </ol>
 </header>
 
-<hr>
-
-<section class="bloc vrai">
-  <h2><span class="num">Ce que c'est,</span> en vrai</h2>
+<section class="bloc">
+  <h2><span class="num">Comment</span> ça marche</h2>
   <ul>
-    <li><b>Ce n'est pas le modèle Claude offert.</b> C'est l'outil Claude Code (le terminal, les fichiers, les agents) qui tourne sur d'autres modèles : GLM, DeepSeek, Qwen, Gemini, Kimi… Pour le travail courant ça tient très bien, pour les tâches les plus dures garde Claude.</li>
-    <li><b>Les 1,6 milliard de tokens</b> sont la somme des offres gratuites de chaque fournisseur. Tu crées toi même tes comptes chez eux, OmniRoute les additionne.</li>
-    <li><b>Tout tourne sur ta machine.</b> Le projet est sous licence MIT, plus de 75 000 étoiles sur GitHub.</li>
+    <li><b>La bascule automatique.</b> Avec le modèle <code>auto</code>, quand un fournisseur atteint sa limite ou tombe en panne, OmniRoute envoie la requête suivante au prochain modèle disponible. Ta session continue, tu n'as rien à faire.</li>
+    <li><b>La compression des prompts.</b> Activée par défaut : chaque requête est compressée avant de partir vers le modèle, de 15 à 95 % de tokens en moins selon le contenu. Le code, les liens et les données structurées ne sont jamais touchés.</li>
+    <li><b>Ce que ça change vraiment.</b> C'est l'outil Claude Code (le terminal, les fichiers, les agents) qui tourne sur d'autres modèles : GLM, DeepSeek, Qwen, Gemini, Kimi… Les 1,6 milliard de tokens sont la somme des offres gratuites de chaque fournisseur : tu crées tes comptes chez eux, OmniRoute les additionne. Pour le travail courant ça tient très bien, pour les tâches les plus dures garde Claude.</li>
+    <li><b>Tout tourne sur ta machine.</b> Licence MIT, plus de 75 000 étoiles sur GitHub.</li>
   </ul>
 </section>
+
+<section class="cta">
+  <p class="gros">Tu fais déjà du chiffre, mais tu fais encore des tâches à la main ?</p>
+  <p>Réponds <b>« claude »</b> au message qu'on t'a envoyé. On regarde ensemble comment automatiser ton business et passer directement à la vitesse supérieure, avec ton propre Claude.</p>
+  <p class="bulle">claude</p>
+</section>
+
+<section class="prompt">
+  <h2><span class="num">Le plus rapide :</span> le prompt</h2>
+  <p>Tu n'as pas envie de tout installer toi même ? Ouvre Claude Code et colle ça, il fait l'installation avec toi :</p>
+  <div class="cmd"><pre>Installe OmniRoute pour moi (le dépôt : github.com/diegosouzapw/OmniRoute). Vérifie d'abord que j'ai Node 22 ou plus, installe le avec npm, lance le, puis guide moi étape par étape pour brancher des fournisseurs gratuits dans son tableau de bord. Ne branche jamais mon compte Claude comme fournisseur. Quand c'est prêt, vérifie que les modèles répondent, puis crée moi une commande courte, "claude-free", qui lance Claude Code à travers OmniRoute avec le modèle auto. Explique moi chaque étape simplement.</pre></div>
+  <p>Il vérifie ta machine, installe, te dit quoi cliquer, teste, et te laisse une commande toute prête. Dix minutes, et tu as un plan B le jour où ta limite tombe en plein travail.</p>
+</section>
+
+<h2 class="intertitre">Tu préfères le faire à la main ?<br><span class="num">Suis ces étapes</span></h2>
 
 <section class="bloc">
   <span class="compte">2 minutes</span>
@@ -161,41 +164,13 @@ omniroute</pre></div>
   <p class="note">Tu dois voir la liste des modèles que tu as branchés.</p>
 </section>
 
-<section class="bloc">
-  <h2><span class="num">Les deux</span> trucs de la vidéo</h2>
-  <h3>La bascule automatique</h3>
-  <p class="quoi">C'est le modèle <code>auto</code> : quand un fournisseur atteint sa limite ou tombe en panne, OmniRoute envoie la requête suivante au prochain modèle disponible. Ta session continue, tu n'as rien à faire.</p>
-  <h3>La compression des prompts</h3>
-  <p class="quoi">Activée par défaut. Chaque requête est compressée avant de partir vers le modèle : de 15 à 95 % de tokens en moins selon le contenu. Le code, les liens et les données structurées ne sont jamais touchés.</p>
-</section>
-
 <section class="bloc vrai">
-  <h2><span class="num">Bon</span> à savoir</h2>
+  <h2><span class="num">Le seul</span> piège</h2>
   <ul>
-    <li><b>Garde ton abonnement Claude à part.</b> Utilise <code>claude</code> normalement tant que tu as du quota, et <code>omniroute run claude</code> quand ta limite tombe. Évite de brancher ton compte Claude Pro ou Max comme fournisseur dans OmniRoute : des utilisateurs ont eu leur compte coupé par Anthropic juste après (<a href="https://github.com/diegosouzapw/OmniRoute/issues/4118">voir le signalement</a>).</li>
-    <li><b>Pas de données sensibles sur les offres gratuites.</b> Certains fournisseurs gratuits peuvent se servir de ce que tu leur envoies. Rien de confidentiel, rien qui concerne tes clients.</li>
+    <li><b>N'ajoute pas ton compte Claude Pro ou Max comme fournisseur dans OmniRoute</b> : des comptes ont été coupés par Anthropic juste après (<a href="https://github.com/diegosouzapw/OmniRoute/issues/4118">voir le signalement</a>). Basculer Claude Code sur d'autres modèles, en revanche, ne pose aucun problème : garde <code>claude</code> pour ton abonnement, et <code>omniroute run claude</code> pour les modèles gratuits.</li>
+    <li><b>Pas de données confidentielles sur les offres gratuites.</b> Certains fournisseurs gratuits peuvent se servir de ce que tu leur envoies.</li>
   </ul>
   <p class="note">Le projet : <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></p>
-</section>
-
-<section class="prompt">
-  <h2><span class="num">La partie</span> que personne ne fait</h2>
-  <p>Tu n'as pas envie de taper tout ça ? Ouvre Claude Code et colle ça, il fait l'installation avec toi :</p>
-  <div class="cmd"><pre>Installe OmniRoute pour moi (le dépôt : github.com/diegosouzapw/OmniRoute). Vérifie d'abord que j'ai Node 22 ou plus, installe le avec npm, lance le, puis guide moi étape par étape pour brancher des fournisseurs gratuits dans son tableau de bord. Ne branche jamais mon compte Claude comme fournisseur. Quand c'est prêt, vérifie que les modèles répondent, puis crée moi une commande courte, "claude-free", qui lance Claude Code à travers OmniRoute avec le modèle auto. Explique moi chaque étape simplement.</pre></div>
-  <p>Il vérifie ta machine, installe, te dit quoi cliquer, teste, et te laisse une commande toute prête. Dix minutes, et tu as un plan B le jour où ta limite tombe en plein travail.</p>
-</section>
-
-<section class="cta">
-  <p class="surtitre">Et après les tokens</p>
-  <p class="gros">Tu économises des tokens.<br>On te fait gagner des heures.</p>
-  <p>Avec Lucas, on monte des stacks Claude directement dans les business : sur ton propre abonnement, branchées sur tes vrais outils, testées sur ton quotidien.</p>
-  <ul>
-    <li>Tes tâches répétitives qui tournent toutes seules</li>
-    <li>Un système qui écrit, trie et prépare comme toi</li>
-    <li>Prêt en 3 jours, et tu sais le piloter toi même</li>
-  </ul>
-  <a class="bouton" href="https://www.instagram.com/pabloetlucas/">DM « claude » sur Instagram</a>
-  <p class="petit">On regarde ton business ensemble et on te dit honnêtement ce qui vaut le coup d'être automatisé.</p>
 </section>
 
 <footer>Pablo Romero · OmniRoute est un projet open source de diegosouzapw, sous licence MIT</footer>
