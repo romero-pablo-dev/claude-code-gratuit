@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#EFD8CA">
+<meta name="theme-color" content="#F6EEE8">
 <title>Claude Code sans limite · Pablo Romero</title>
 <meta name="description" content="OmniRoute : branche Claude Code sur plus de 200 fournisseurs d'IA, dont des dizaines gratuits. Le prompt qui fait l'installation à ta place, et les étapes à la main.">
 <meta property="og:title" content="Claude Code sans limite">
@@ -18,14 +18,18 @@
   --panneau:#FAFAF8; --entete:#F3F2F0; --bord:rgba(30,20,30,.08); --vert:#0a8a5f; --rouge:#cd1e3e;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;background-color:#EFD8CA;background-image:radial-gradient(ellipse 700px 560px at 0 0,rgba(240,195,170,.7),transparent 70%),
-    radial-gradient(ellipse 700px 700px at 100% 55%,rgba(232,200,190,.5),transparent 70%),
-    linear-gradient(160deg,#F7F2EC,#EFEAE6);min-height:100%}
-body{margin:0;color:var(--noir);font:500 17px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh;background:transparent}
+html{-webkit-text-size-adjust:100%;background-color:#F6EEE8}
+body{margin:0;color:var(--noir);font:500 17px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh;
+  background-color:#F6EEE8;background-image:
+    linear-gradient(#F6EEE8 0,#F6EEE8 70px,rgba(246,238,232,0) 360px),
+    radial-gradient(ellipse 760px 620px at 0 280px,rgba(240,195,170,.55),transparent 70%),
+    radial-gradient(ellipse 700px 700px at 100% 55%,rgba(232,200,190,.45),transparent 70%),
+    linear-gradient(180deg,#F6EEE8,#EFEAE6)}
 body{position:relative}
 body::before{content:"";position:absolute;inset:0;pointer-events:none;
   background-image:linear-gradient(rgba(60,40,30,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(60,40,30,.05) 1px,transparent 1px);
-  background-size:60px 60px}
+  background-size:60px 60px;
+  -webkit-mask-image:linear-gradient(transparent 0,transparent 60px,#000 340px);mask-image:linear-gradient(transparent 0,transparent 60px,#000 340px)}
 .wrap{position:relative;max-width:720px;margin:0 auto;padding:34px 20px 0}
 .pill{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(198,73,2,.25);background:rgba(232,190,170,.3);
   border-radius:999px;padding:7px 15px;font:13px "DM Mono",monospace;letter-spacing:2px;color:var(--orange);text-transform:uppercase}
