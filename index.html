@@ -4,178 +4,205 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claude Code sans limite · Pablo Romero</title>
-<meta name="description" content="OmniRoute : branche Claude Code sur plus de 200 fournisseurs d'IA, dont des dizaines gratuits. Installation pas à pas, commandes à copier, et le prompt qui fait l'installation à ta place.">
+<meta name="description" content="OmniRoute : branche Claude Code sur plus de 200 fournisseurs d'IA, dont des dizaines gratuits. Le prompt qui fait l'installation à ta place, et les étapes à la main.">
 <meta property="og:title" content="Claude Code sans limite">
-<meta property="og:description" content="OmniRoute : bascule automatique, compression des prompts, des modèles gratuits derrière Claude Code. Les commandes exactes.">
+<meta property="og:description" content="OmniRoute : bascule automatique, compression des prompts, des modèles gratuits derrière Claude Code.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800&family=Inter:wght@500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ochre:#C64902; --creme:#F7E0C3; --brun:#5C1A08; --caramel:#AD6C0B; --ambre:#E09A2B;
-  --creme-clair:#FBEEDC; --ombre:rgba(92,26,8,.14);
+  --orange:#C64902; --orange-vif:#F07A3A; --noir:#160b08; --gris:#5d5560; --gris-clair:#8d878f;
+  --panneau:#FAFAF8; --entete:#F3F2F0; --bord:rgba(30,20,30,.08); --vert:#0a8a5f; --rouge:#cd1e3e;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--creme);color:var(--brun);
-  font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-weight:500;
-  font-size:17px;line-height:1.5}
-.wrap{max-width:720px;margin:0 auto;padding:0 20px}
-header{padding:48px 0 28px}
-.eyebrow{font-weight:700;font-size:13px;letter-spacing:1.6px;color:var(--caramel);text-transform:uppercase;margin:0 0 14px}
-h1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(42px,11vw,76px);line-height:.92;
-  letter-spacing:-.5px;margin:0 0 18px;text-transform:uppercase}
-h1 .accent{color:var(--ochre)}
-.chapo{font-size:18px;margin:0 0 10px}
-.chapo b{font-weight:700}
-h2{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(26px,6.4vw,38px);line-height:1;
-  text-transform:uppercase;letter-spacing:-.2px;margin:0 0 4px}
-h2 .num{color:var(--ochre)}
-h3{font-size:16px;font-weight:700;margin:22px 0 8px}
-.etapes{counter-reset:e;list-style:none;padding:0;margin:26px 0 0}
-.etapes li{counter-increment:e;position:relative;padding:0 0 0 46px;margin:0 0 14px}
-.etapes li::before{content:counter(e);position:absolute;left:0;top:-2px;width:32px;height:32px;border-radius:9px;
-  background:var(--ochre);color:var(--creme);font-family:Anton,sans-serif;font-size:19px;
-  display:flex;align-items:center;justify-content:center}
-.chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0 0}
-.chiffres div{background:var(--creme-clair);border-radius:14px;padding:14px 10px;text-align:center;box-shadow:0 6px 16px var(--ombre)}
-.chiffres b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(24px,7vw,34px);color:var(--ochre);line-height:1.05}
-.chiffres span{font-size:13px;line-height:1.3;display:block;margin-top:4px}
-.bloc{background:var(--creme-clair);border-radius:18px;padding:22px 20px 24px;margin:0 0 18px;
-  box-shadow:0 10px 24px var(--ombre)}
-.bloc .quoi{margin:6px 0 16px}
-.bloc ul{margin:10px 0 0;padding-left:20px}
-.bloc li{margin:0 0 8px}
-.compte{display:inline-block;background:var(--ochre);color:var(--creme);font-weight:700;font-size:13px;
-  letter-spacing:.6px;padding:5px 11px;border-radius:7px;margin:0 0 10px}
-.cmd{position:relative;background:var(--brun);border-radius:12px;margin:12px 0}
-.cmd pre{margin:0;padding:44px 16px 16px 16px;overflow-x:hidden;
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;
-  color:var(--creme);white-space:pre-wrap;overflow-wrap:anywhere}
-.cmd button{position:absolute;top:9px;right:9px;border:0;cursor:pointer;
-  background:var(--creme);color:var(--brun);font-family:inherit;font-weight:700;font-size:12px;
-  padding:7px 11px;border-radius:8px}
-.cmd button.ok{background:var(--ambre);color:var(--brun)}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;background:rgba(92,26,8,.08);padding:1px 6px;border-radius:5px}
-.note{font-size:15px;color:#7a3a22;margin:10px 0 0}
-a{color:var(--ochre);text-decoration:none;font-weight:700;border-bottom:2px solid rgba(198,73,2,.3)}
-a:hover{border-bottom-color:var(--ochre)}
-.vrai{border:2px solid rgba(198,73,2,.35);background:transparent;box-shadow:none}
-.prompt{background:var(--brun);color:var(--creme);border-radius:20px;padding:26px 20px 28px;margin:34px 0}
-.prompt h2{color:var(--creme)}
-.prompt h2 .num{color:var(--ambre)}
-.prompt p{margin:10px 0 0}
-.prompt .cmd{background:rgba(247,224,195,.12)}
-.prompt .cmd pre{color:var(--creme);white-space:pre-wrap}
-.cta{background:var(--ochre);color:var(--creme);border-radius:22px;padding:30px 22px 30px;margin:8px 0 18px;text-align:center}
-.cta .gros{font-family:Anton,sans-serif;font-size:clamp(28px,7.4vw,42px);text-transform:uppercase;line-height:1;margin:0 0 16px}
-.cta p{margin:0 0 12px}
-.cta .bulle{display:inline-block;background:var(--creme);color:var(--brun);font-weight:700;font-size:20px;
-  padding:12px 26px;border-radius:22px 22px 6px 22px;margin:10px 0 0;box-shadow:0 8px 18px rgba(92,26,8,.25)}
-.intertitre{margin:34px 0 18px}
-footer{padding:40px 0 60px;text-align:center;font-size:14px;color:#8a5238}
-hr{border:0;border-top:2px solid rgba(92,26,8,.12);margin:30px 0}
+body{margin:0;color:var(--noir);font:500 17px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:
+    radial-gradient(ellipse 700px 560px at 0 0,rgba(240,195,170,.7),transparent 70%),
+    radial-gradient(ellipse 700px 700px at 100% 55%,rgba(232,200,190,.5),transparent 70%),
+    linear-gradient(160deg,#F7F2EC,#EFEAE6);
+  min-height:100vh}
+body{position:relative}
+body::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(60,40,30,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(60,40,30,.05) 1px,transparent 1px);
+  background-size:60px 60px}
+.wrap{position:relative;max-width:720px;margin:0 auto;padding:34px 20px 0}
+.pill{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(198,73,2,.25);background:rgba(232,190,170,.3);
+  border-radius:999px;padding:7px 15px;font:13px "DM Mono",monospace;letter-spacing:2px;color:var(--orange);text-transform:uppercase}
+.pill::before{content:"";width:7px;height:7px;border-radius:7px;background:var(--orange)}
+h1{font:800 clamp(48px,13vw,86px)/1 "Inter Tight",sans-serif;letter-spacing:-.045em;margin:18px 0 14px}
+h1 span,.t span{color:var(--orange)}
+.chapo{color:var(--gris);font-size:18px;margin:0 0 10px}
+.chapo b{color:var(--noir)}
+.chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 8px}
+.chiffres div{background:var(--panneau);border-radius:16px;padding:15px 11px;box-shadow:0 14px 30px -18px rgba(70,40,30,.35);border:1.5px solid var(--bord)}
+.chiffres b{display:block;font:800 clamp(26px,7.4vw,36px)/1 "Inter Tight",sans-serif;letter-spacing:-.05em;color:var(--orange)}
+.chiffres span{display:block;font-size:12.5px;line-height:1.3;color:var(--gris);margin-top:5px}
+.pan{background:var(--panneau);border:1.5px solid var(--bord);border-radius:20px;overflow:hidden;margin:18px 0;
+  box-shadow:0 34px 64px -34px rgba(70,40,30,.34),0 8px 20px -12px rgba(70,40,30,.12)}
+.hd{background:var(--entete);border-bottom:1.5px solid rgba(30,20,30,.06);padding:13px 20px;font:13.5px "DM Mono",monospace;
+  color:#69676e;display:flex;gap:8px;align-items:center}
+.hd i{width:10px;height:10px;border-radius:10px;background:#d2d0d4;display:inline-block;flex:none}
+.hd em{font-style:normal;margin-left:8px}
+.hd .badge{margin-left:auto;background:rgba(198,73,2,.1);color:var(--orange);border-radius:999px;padding:2px 10px;font-size:12px;white-space:nowrap}
+.bd{padding:20px 20px 22px}
+.t{font:800 clamp(26px,7vw,36px)/1.04 "Inter Tight",sans-serif;letter-spacing:-.04em;margin:0 0 10px}
+.bd p{margin:0 0 12px;color:#3d363f}
+.bd ul{margin:6px 0 0;padding:0;list-style:none}
+.bd li{position:relative;padding-left:22px;margin:0 0 12px;color:#3d363f}
+.bd li::before{content:"›";position:absolute;left:4px;top:-1px;color:var(--orange);font:600 18px "DM Mono",monospace}
+.bd li b{color:var(--noir)}
+h3{font:700 15.5px Inter,sans-serif;margin:20px 0 6px}
+code{font:.86em "DM Mono",monospace;background:rgba(30,20,30,.06);padding:1px 6px;border-radius:5px}
+.cmd{position:relative;background:var(--entete);border:1.5px solid var(--bord);border-radius:12px;margin:10px 0}
+.cmd pre{margin:0;padding:42px 16px 15px;font:14px/1.65 "DM Mono",monospace;color:var(--noir);white-space:pre-wrap;overflow-wrap:anywhere}
+.cmd button{position:absolute;top:8px;right:8px;background:var(--noir);color:#fff;border:0;border-radius:8px;cursor:pointer;
+  font:12px "DM Mono",monospace;padding:6px 11px}
+.cmd button.ok{background:var(--vert)}
+.note{font-size:14.5px;color:var(--gris)!important}
+a{color:var(--orange);text-decoration:none;font-weight:600;border-bottom:1.5px solid rgba(198,73,2,.3)}
+a:hover{border-bottom-color:var(--orange)}
+.term{font:14.5px/1.85 "DM Mono",monospace;color:var(--noir)}
+.term .p{color:var(--orange)}
+.term .m{color:var(--gris)}
+.term .v{color:var(--vert)}
+.cta{background:var(--noir);color:#fff;border-radius:22px;padding:26px 22px 26px;margin:26px 0;box-shadow:0 30px 60px -30px rgba(22,11,8,.6)}
+.cta .pill{color:#F7B48C;border-color:rgba(240,122,58,.35);background:rgba(240,122,58,.12)}
+.cta .pill::before{background:var(--orange-vif)}
+.cta h2{font:800 clamp(28px,7.6vw,42px)/1.02 "Inter Tight",sans-serif;letter-spacing:-.04em;margin:14px 0 12px}
+.cta h2 span{color:var(--orange-vif)}
+.cta p{color:#d9d3d0;margin:0 0 14px}
+.cta b{color:#fff}
+.bulle{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:18px;padding:11px 24px;border-radius:20px 20px 5px 20px}
+.inter{font:800 clamp(28px,7.6vw,42px)/1.04 "Inter Tight",sans-serif;letter-spacing:-.04em;margin:40px 0 4px}
+.inter span{color:var(--orange)}
+.piege{border-color:rgba(205,30,62,.25)}
+.piege .hd{background:rgba(205,30,62,.06);color:var(--rouge)}
+.piege .hd i{background:rgba(205,30,62,.35)}
+footer{position:relative;padding:36px 20px 56px;text-align:center;font-size:13.5px;color:var(--gris-clair)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <p class="eyebrow">Pablo Romero</p>
-  <h1><span class="accent">Claude Code</span><br>sans limite</h1>
-  <p class="chapo">Tu as commenté <b>PROMPT</b>, voilà la ressource de la vidéo : <b>OmniRoute</b>.</p>
-  <p class="chapo">Un projet open source qui se met entre Claude Code et les modèles d'IA. Tu gardes l'outil Claude Code que tu connais, et derrière, OmniRoute le branche sur plus de 200 fournisseurs, dont des dizaines gratuits.</p>
+  <span class="pill">Tu as commenté prompt</span>
+  <h1>Claude Code<br><span>sans limite</span></h1>
+  <p class="chapo">Voilà la ressource de la vidéo&nbsp;: <b>OmniRoute</b>. Un projet open source qui se met entre Claude Code et les modèles d'IA. Tu gardes l'outil Claude Code que tu connais, et derrière, OmniRoute le branche sur plus de 200 fournisseurs, dont des dizaines gratuits.</p>
   <div class="chiffres">
     <div><b>200+</b><span>fournisseurs d'IA reliés</span></div>
     <div><b>1,6 Md</b><span>tokens gratuits par mois, toutes offres cumulées</span></div>
-    <div><b>95 %</b><span>de tokens économisés au maximum par la compression</span></div>
+    <div><b>−95 %</b><span>de tokens au maximum avec la compression</span></div>
   </div>
 </header>
 
-<section class="bloc">
-  <h2><span class="num">Comment</span> ça marche</h2>
-  <ul>
-    <li><b>La bascule automatique.</b> Avec le modèle <code>auto</code>, quand un fournisseur atteint sa limite ou tombe en panne, OmniRoute envoie la requête suivante au prochain modèle disponible. Ta session continue, tu n'as rien à faire.</li>
-    <li><b>La compression des prompts.</b> Activée par défaut : chaque requête est compressée avant de partir vers le modèle, de 15 à 95 % de tokens en moins selon le contenu. Le code, les liens et les données structurées ne sont jamais touchés.</li>
-    <li><b>Ce que ça change vraiment.</b> C'est l'outil Claude Code (le terminal, les fichiers, les agents) qui tourne sur d'autres modèles : GLM, DeepSeek, Qwen, Gemini, Kimi… Les 1,6 milliard de tokens sont la somme des offres gratuites de chaque fournisseur : tu crées tes comptes chez eux, OmniRoute les additionne. Pour le travail courant ça tient très bien, pour les tâches les plus dures garde Claude.</li>
-    <li><b>Tout tourne sur ta machine.</b> Licence MIT, plus de 75 000 étoiles sur GitHub.</li>
-  </ul>
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>claude · session</em></div>
+  <div class="bd term">
+    <span class="p">$</span> omniroute run claude --model auto<br>
+    <span class="m">› opus 5 limite atteinte</span><br>
+    <span class="m">› bascule vers</span> <b>gemini-2.5-pro</b><br>
+    <span class="v">✓ la session continue</span>
+  </div>
+</section>
+
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>comment ça marche</em></div>
+  <div class="bd">
+    <p class="t">Ce que fait <span>OmniRoute</span></p>
+    <ul>
+      <li><b>La bascule automatique.</b> Avec le modèle <code>auto</code>, quand un fournisseur atteint sa limite ou tombe en panne, OmniRoute envoie la requête suivante au prochain modèle disponible. Ta session continue, tu n'as rien à faire.</li>
+      <li><b>La compression des prompts.</b> Activée par défaut&nbsp;: chaque requête est compressée avant de partir vers le modèle, de 15 à 95 % de tokens en moins selon le contenu. Le code, les liens et les données structurées ne sont jamais touchés.</li>
+      <li><b>Ce que ça change vraiment.</b> C'est l'outil Claude Code (le terminal, les fichiers, les agents) qui tourne sur d'autres modèles&nbsp;: GLM, DeepSeek, Qwen, Gemini, Kimi… Les 1,6 milliard de tokens sont la somme des offres gratuites de chaque fournisseur&nbsp;: tu crées tes comptes chez eux, OmniRoute les additionne. Pour le travail courant ça tient très bien, pour les tâches les plus dures garde Claude.</li>
+      <li><b>Tout tourne sur ta machine.</b> Licence MIT, plus de 75 000 étoiles sur GitHub.</li>
+    </ul>
+  </div>
 </section>
 
 <section class="cta">
-  <p class="gros">Tu fais déjà du chiffre, mais tu fais encore des tâches à la main ?</p>
-  <p>Réponds <b>« claude »</b> au message qu'on t'a envoyé. On regarde ensemble comment automatiser ton business et passer directement à la vitesse supérieure, avec ton propre Claude.</p>
-  <p class="bulle">claude</p>
+  <span class="pill">Une question pour toi</span>
+  <h2>Tu fais déjà du chiffre, mais tu fais encore <span>des tâches à la main&nbsp;?</span></h2>
+  <p>Réponds <b>«&nbsp;claude&nbsp;»</b> au message qu'on t'a envoyé. On regarde ensemble comment automatiser ton business et passer directement à la vitesse supérieure, avec ton propre Claude.</p>
+  <span class="bulle">claude</span>
 </section>
 
-<section class="prompt">
-  <h2><span class="num">Le plus rapide :</span> le prompt</h2>
-  <p>Tu n'as pas envie de tout installer toi même ? Ouvre Claude Code et colle ça, il fait l'installation avec toi :</p>
-  <div class="cmd"><pre>Installe OmniRoute pour moi (le dépôt : github.com/diegosouzapw/OmniRoute). Vérifie d'abord que j'ai Node 22 ou plus, installe le avec npm, lance le, puis guide moi étape par étape pour brancher des fournisseurs gratuits dans son tableau de bord. Ne branche jamais mon compte Claude comme fournisseur. Quand c'est prêt, vérifie que les modèles répondent, puis crée moi une commande courte, "claude-free", qui lance Claude Code à travers OmniRoute avec le modèle auto. Explique moi chaque étape simplement.</pre></div>
-  <p>Il vérifie ta machine, installe, te dit quoi cliquer, teste, et te laisse une commande toute prête. Dix minutes, et tu as un plan B le jour où ta limite tombe en plein travail.</p>
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>le prompt</em><span class="badge">10 min</span></div>
+  <div class="bd">
+    <p class="t">Pas envie de <span>tout installer&nbsp;?</span></p>
+    <p>Ouvre Claude Code et colle ça, il fait l'installation avec toi&nbsp;:</p>
+    <div class="cmd"><pre>Installe OmniRoute pour moi (le dépôt : github.com/diegosouzapw/OmniRoute). Vérifie d'abord que j'ai Node 22 ou plus, installe le avec npm, lance le, puis guide moi étape par étape pour brancher des fournisseurs gratuits dans son tableau de bord. Ne branche jamais mon compte Claude comme fournisseur. Quand c'est prêt, vérifie que les modèles répondent, puis crée moi une commande courte, "claude-free", qui lance Claude Code à travers OmniRoute avec le modèle auto. Explique moi chaque étape simplement.</pre></div>
+    <p class="note">Il vérifie ta machine, installe, te dit quoi cliquer, teste, et te laisse une commande toute prête. Tu as un plan B le jour où ta limite tombe en plein travail.</p>
+  </div>
 </section>
 
-<h2 class="intertitre">Tu préfères le faire à la main ?<br><span class="num">Suis ces étapes</span></h2>
+<p class="inter">Tu préfères le faire à la main&nbsp;?<br><span>Suis ces étapes.</span></p>
 
-<section class="bloc">
-  <span class="compte">2 minutes</span>
-  <h2><span class="num">1.</span> Ce qu'il te faut</h2>
-  <p class="quoi">Node.js en version 22 ou plus, et Claude Code. Vérifie ta version de Node :</p>
-  <div class="cmd"><pre>node -v</pre></div>
-  <p class="note">Si tu es sous la version 22, installe la dernière LTS sur <a href="https://nodejs.org">nodejs.org</a>. Pas encore Claude Code ?</p>
-  <div class="cmd"><pre>npm install -g @anthropic-ai/claude-code</pre></div>
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>étape 1 · prérequis</em><span class="badge">2 min</span></div>
+  <div class="bd">
+    <p>Node.js en version 22 ou plus, et Claude Code. Vérifie ta version de Node&nbsp;:</p>
+    <div class="cmd"><pre>node -v</pre></div>
+    <p class="note">En dessous de la version 22, installe la dernière LTS sur <a href="https://nodejs.org">nodejs.org</a>. Pas encore Claude Code&nbsp;?</p>
+    <div class="cmd"><pre>npm install -g @anthropic-ai/claude-code</pre></div>
+  </div>
 </section>
 
-<section class="bloc">
-  <span class="compte">1 commande</span>
-  <h2><span class="num">2.</span> Installer OmniRoute</h2>
-  <p class="quoi">Installe le, puis lance le. Le tableau de bord s'ouvre sur <code>http://localhost:20128</code>.</p>
-  <div class="cmd"><pre>npm install -g omniroute
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>étape 2 · installer</em><span class="badge">1 cmd</span></div>
+  <div class="bd">
+    <p>Installe le, puis lance le. Le tableau de bord s'ouvre sur <code>http://localhost:20128</code>.</p>
+    <div class="cmd"><pre>npm install -g omniroute
 omniroute</pre></div>
-  <h3>Si npm bloque l'installation (npm 11 et plus)</h3>
-  <div class="cmd"><pre>npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute</pre></div>
-  <p class="note">Les avertissements <code>npm warn ERESOLVE</code> pendant l'installation sont sans gravité. Laisse tourner <code>omniroute</code> dans son terminal, il doit rester ouvert.</p>
+    <h3>Si npm bloque l'installation (npm 11 et plus)</h3>
+    <div class="cmd"><pre>npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute</pre></div>
+    <p class="note">Les avertissements <code>npm warn ERESOLVE</code> sont sans gravité. Laisse tourner <code>omniroute</code> dans son terminal, il doit rester ouvert.</p>
+  </div>
 </section>
 
-<section class="bloc">
-  <span class="compte">5 minutes</span>
-  <h2><span class="num">3.</span> Brancher les modèles gratuits</h2>
-  <p class="quoi">Dans le tableau de bord, va dans <b>Providers</b> et ajoute ceux marqués gratuits. Chacun demande un compte chez lui et une clé API. Pour démarrer :</p>
-  <ul>
-    <li><b>OpenRouter</b> : ses modèles <code>:free</code>, une seule clé pour beaucoup de modèles.</li>
-    <li><b>NVIDIA NIM</b> : GLM, MiniMax, environ 40 requêtes par minute offertes.</li>
-    <li><b>Z.AI</b> : GLM 4.7 et GLM 4.5 Flash, gratuits.</li>
-    <li><b>Cloudflare AI</b> : plus de 50 modèles, un quota offert chaque jour.</li>
-  </ul>
-  <p class="note">Ensuite, va dans <b>Endpoints</b> et copie ta clé OmniRoute : c'est elle que Claude Code va utiliser. Plus tu branches de fournisseurs, moins tu tombes à court.</p>
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>étape 3 · modèles</em><span class="badge">5 min</span></div>
+  <div class="bd">
+    <p>Dans le tableau de bord, va dans <b>Providers</b> et ajoute ceux marqués gratuits. Chacun demande un compte chez lui et une clé API. Pour démarrer&nbsp;:</p>
+    <ul>
+      <li><b>OpenRouter</b>&nbsp;: ses modèles <code>:free</code>, une seule clé pour beaucoup de modèles.</li>
+      <li><b>NVIDIA NIM</b>&nbsp;: GLM, MiniMax, environ 40 requêtes par minute offertes.</li>
+      <li><b>Z.AI</b>&nbsp;: GLM 4.7 et GLM 4.5 Flash, gratuits.</li>
+      <li><b>Cloudflare AI</b>&nbsp;: plus de 50 modèles, un quota offert chaque jour.</li>
+    </ul>
+    <p class="note">Ensuite, va dans <b>Endpoints</b> et copie ta clé OmniRoute&nbsp;: c'est elle que Claude Code va utiliser. Plus tu branches de fournisseurs, moins tu tombes à court.</p>
+  </div>
 </section>
 
-<section class="bloc">
-  <span class="compte">1 commande</span>
-  <h2><span class="num">4.</span> Lancer Claude Code dessus</h2>
-  <p class="quoi">Dans un deuxième terminal :</p>
-  <div class="cmd"><pre>omniroute run claude --model auto</pre></div>
-  <p class="note"><code>auto</code> choisit le meilleur modèle disponible parmi tes fournisseurs et passe au suivant dès qu'un quota tombe. Pour du code, essaie <code>auto/coding</code>, qui privilégie la qualité.</p>
-  <h3>Ou le configurer une fois pour toutes</h3>
-  <div class="cmd"><pre>omniroute setup-claude</pre></div>
-  <h3>Vérifier que tout marche</h3>
-  <div class="cmd"><pre>curl http://localhost:20128/v1/models -H "Authorization: Bearer TA_CLE_OMNIROUTE"</pre></div>
-  <p class="note">Tu dois voir la liste des modèles que tu as branchés.</p>
+<section class="pan">
+  <div class="hd"><i></i><i></i><i></i><em>étape 4 · lancer</em><span class="badge">1 cmd</span></div>
+  <div class="bd">
+    <p>Dans un deuxième terminal&nbsp;:</p>
+    <div class="cmd"><pre>omniroute run claude --model auto</pre></div>
+    <p class="note"><code>auto</code> choisit le meilleur modèle disponible parmi tes fournisseurs et passe au suivant dès qu'un quota tombe. Pour du code, essaie <code>auto/coding</code>, qui privilégie la qualité.</p>
+    <h3>Ou le configurer une fois pour toutes</h3>
+    <div class="cmd"><pre>omniroute setup-claude</pre></div>
+    <h3>Vérifier que tout marche</h3>
+    <div class="cmd"><pre>curl http://localhost:20128/v1/models -H "Authorization: Bearer TA_CLE_OMNIROUTE"</pre></div>
+    <p class="note">Tu dois voir la liste des modèles que tu as branchés.</p>
+  </div>
 </section>
 
-<section class="bloc vrai">
-  <h2><span class="num">Le seul</span> piège</h2>
-  <ul>
-    <li><b>N'ajoute pas ton compte Claude Pro ou Max comme fournisseur dans OmniRoute</b> : des comptes ont été coupés par Anthropic juste après (<a href="https://github.com/diegosouzapw/OmniRoute/issues/4118">voir le signalement</a>). Basculer Claude Code sur d'autres modèles, en revanche, ne pose aucun problème : garde <code>claude</code> pour ton abonnement, et <code>omniroute run claude</code> pour les modèles gratuits.</li>
-    <li><b>Pas de données confidentielles sur les offres gratuites.</b> Certains fournisseurs gratuits peuvent se servir de ce que tu leur envoies.</li>
-  </ul>
-  <p class="note">Le projet : <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></p>
+<section class="pan piege">
+  <div class="hd"><i></i><i></i><i></i><em>le seul piège</em></div>
+  <div class="bd">
+    <ul>
+      <li><b>N'ajoute pas ton compte Claude Pro ou Max comme fournisseur dans OmniRoute</b>&nbsp;: des comptes ont été coupés par Anthropic juste après (<a href="https://github.com/diegosouzapw/OmniRoute/issues/4118">voir le signalement</a>). Basculer Claude Code sur d'autres modèles, en revanche, ne pose aucun problème&nbsp;: garde <code>claude</code> pour ton abonnement, et <code>omniroute run claude</code> pour les modèles gratuits.</li>
+      <li><b>Pas de données confidentielles sur les offres gratuites.</b> Certains fournisseurs gratuits peuvent se servir de ce que tu leur envoies.</li>
+    </ul>
+    <p class="note">Le projet&nbsp;: <a href="https://github.com/diegosouzapw/OmniRoute">diegosouzapw/OmniRoute</a></p>
+  </div>
 </section>
-
-<footer>Pablo Romero · OmniRoute est un projet open source de diegosouzapw, sous licence MIT</footer>
 
 </div>
+<footer>Pablo Romero · OmniRoute est un projet open source de diegosouzapw, sous licence MIT</footer>
 <script>
 document.querySelectorAll('.cmd').forEach(function(bloc){
   var b = document.createElement('button');
